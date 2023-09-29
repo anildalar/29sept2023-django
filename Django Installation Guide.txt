@@ -1,3 +1,20 @@
+git add .  (Stagging)
+git reset  (UnStagging)
+
+
+https://cicd.dollorinfotech.com
+
+
+1. Go to your domain panel
+2. Create a "A" record and point to our ip
+3. Check with ping command
+	ping cicd.dollorinfotech.com -t
+
+	If you get a reply from ip
+4. Setup the Jenkins using Docker Container
+
+5w. Setup SSL
+
 http://address:port/github-webhook/
 
 1. apt update && apt upgrade && apt install -y sudo software-properties-common build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev python3-full python3-pip

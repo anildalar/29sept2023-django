@@ -1,0 +1,341 @@
+http://address:port/github-webhook/
+
+1. apt update && apt upgrade && apt install -y sudo software-properties-common build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev python3-full python3-pip
+
+-----------------------------------------------------------------------------------------------------------------
+
+3.
+syntax -- wget https://www.python.org/ftp/python/<Python_version>/Python-<Python_version>.tar.xz
+
+example -- wget https://www.python.org/ftp/python/3.11.5/Python-3.11.5.tar.xz
+
+4. tar -xf Python-3.11.5.tar.xz
+
+5. cd Python-3.11.5
+
+6. ./configure --enable-optimizations
+
+7. make -j4 
+
+8. sudo make install
+
+9. python3.11 --version
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+http://65.0.127.159:8080//github-webhook/
+
+Python Commands
+
+To check where is python is installed
+	where python
+
+py --help
+
+py -m pip install --upgrade pip
+
+python3 -m pip3 install --upgrade pip
+py -m pip --version
+
+pip is package manager for python
+npm is package manager for nodejs
+gem is package manager for Ruby
+
+Download PIP
+
+
+Python Library(Django) <------ Download -------- pypi.org
+
+
+Django is based on MVT (Model-View-Template) architecture. 
+
+MVT is a software design pattern for developing a web application. 
+
+There are 2 Environment Available in Python
+	1. Global Enviroment  (Comes default with python)
+	2. Virtual/Local Envronment (venv need to install seperatly)
+
+To Check What Packages are installed on Global Environment
+	pip freeze
+
+Installing the virtual Environment
+	py -m pip install --user virtualenv
+
+
+
+apt install python3-full
+
+Create a new virtual Enviromnet
+
+Syntax
+	py -m venv <envName>
+Example
+	py -m venv myenv
+
+
+Activate the virual Enviroment
+	.\env\Scripts\activate
+		or
+	source .\env\Scripts\activate
+
+
+To Check What Packages are installed on Virtual Environment?
+	1. Go inside the virual env
+		.\env\Scripts\activate (Windows)
+		or
+		source ./env/Scripts/activate (Linux)
+
+	2. Run the command
+		pip freeze
+
+pip freeze > requirements.txt
+
+
+python3 -m pip3 install -r requirements.txt
+
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+python3 manage.py runserver 0.0.0.0:1010
+
+
+
+To Deactivate the virual Envronment
+	deactivate
+
+
+Django Commands
+
+	pip install django
+
+. = current directory
+
+To create the django Project	
+
+django-admin --help
+
+	django-admin startproject <projectname> <directoryname>
+	django-admin startproject flipkart .
+	
+python manage.py --help
+
+	python manage.py migrate
+	python manage.py runserver 0.0.0.0:8080
+
+	python manage.py collectstatic
+
+
+Django Projects are devided into multiple Apps
+
+Category APp
+
+python manage.py startapp <appname>
+	
+	python manage.py startapp fk_app
+
+
+Database Managers
+
+https://sqlitestudio.pl/
+https://sqlitebrowser.org/
+
+To Apply Migration
+	python manage.py migrate
+
+python manage.py createsuperuser
+winpty python ./manage.py createsuperuser
+
+
+create urls.py inside fk_app
+
+For ImageFields
+python -m pip install Pillow
+
+To create Migration file from models
+	python manage.py makemigrations
+	python manage.py migrate
+
+To Appy Migration
+	python manage.py migrate
+
+https://docs.djangoproject.com/en/3.2/ref/urls/
+
+django path function
+	path(route, view, kwargs=None, name=None)
+
+
+We have to configure the static file configure
+
+settings.py
+
+	import os
+	STATIC_URL = '/static/'
+	STATIC_ROOT = os.path.join(BASE_DIR, '/')
+	STATICFILES_DIRS = (
+   		 os.path.join(BASE_DIR, "static"),
+	)
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '/media')
+
+
+
+from django.conf.urls.static import static
+from django.conf import settings
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    #path(route, view, kwargs=None, name=None)
+    path('', views.home)
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+Client 1 India
+	django 3.1.1
+	package1
+
+
+Client 2 UK
+	django 3.2.9
+	package2
+
+SQLite
+
+
+Django Framework
+	Web Application / Website using Python 
+
+
+Python Frameworks for Web Developments
+	1. Django
+		https://www.djangoproject.com/
+	2. Flask
+		https://flask.palletsprojects.com/en/2.0.x/
+
+
+
+
+
+PHP Development
+	
+	Frameworks
+		1. Laravel 2. Codeigniter 
+	
+
+
+Database
+	1. SQLite 3(Default) https://sqlitestudio.pl/
+	2. MYSQL
+	3. MongoDb
+	4. MariaDB
+	5. POSTGREES
+Web App = 
+	1. Frontend
+	2. Backend
+
+
+
+Client ----> Request ---> Server ( Django Backend)
+Client <---- Response ---< Server ( Django Backend)
+
+
+
+
+
+
+Django System Works on MVT
+M = Model (Database Queries)
+V = View  (View Files)
+T = Template (Logic)
+
+Django System is Collection of Multiple Apps
+
+
+models.py
+
+from django.db import models
+
+# Create your models here.
+
+class Category(models.Model):
+    #1. CategoryName
+    cat_name = models.CharField(max_length=50,unique=True)
+    cat_slug = models.CharField(max_length=50,unique=True)
+    cat_desc = models.TextField(max_length=50,blank=True)
+    cat_img = models.ImageField(upload_to='photo/categories',blank=True)
+    #2. Constructor
+    #3. Method
+    def __str__(self):
+        return self.category_name
+
+table -> migration file --> modals.py
+
+PIL = Python Image Library
+Pillow
+
+Table <----- Migrate <----- Migration file(0001_initial.py) <--- Model File
+
+
+{{singular.colname}}
+
+
+{{ Python Expression }}
+
+python manage.py runserver --insecure 
+
+
+
+pip install django-session-timeout
+pip install django-admin-honeypot-updated-2021
+pip install python-decouple
+
+
+***********************************************************************************
+Why does DEBUG=False setting make my django Static Files Access fail?
+
+
+settings.py
+
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if DEBUG:
+
+  STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+else:
+
+  STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+in mainproject urls.py
+
+from flipkart import settings
+from django.views.static import serve
+from django.urls import re_path
+
+urlpatterns = [
+	
+    re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
+
+]
+
+For More Reference
+https://bestprogrammingblogs.blogspot.com/2021/03/django-static-files-not-working-when-debug-is-false.html
+
+https://stackoverflow.com/questions/70319606/importerror-cannot-import-name-url-from-django-conf-urls-after-upgrading-to
+
+***********************************************************************************
+
+
+ip:port/cart/add_cart/product_id
+ip:port/cart/add_cart/1/1
+
+Which Session ID Contain
+	What Product
+	What Quantity
